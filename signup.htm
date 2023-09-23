@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNUP</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Sign Up</h1>
+        <h4> It's free and only take a minute </h4>
+        <form>
+            <div class="input-box">
+                <label>FIRST NAME</label><br>
+                <input type="text" placeholder=""><br>
+                <label>LAST NAME</label><br>
+                <input type="text" placeholder=""><br>
+                <label for="Class">CLASS</label><br>
+                <select id="Class" name="Class">
+                    <option value="CLASS 3">CLASS 3</option>
+                    <option value="CLASS 4">CLASS 4</option>
+                </select><br>
+                <label for="gender">GENDER</label><br>
+                <select id="gender" name="gender">
+                    <option value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
+                </select><br>
+                <label>MOBILE NUMBER</label><br>
+                <input type="tel" pattern="[10-9]{10}" maxlength="10" placeholder="1234567890"><br>
+                <label>EMAIL</label><br>
+                <input type="email" placeholder="abc@mail.com"><br>
+                <label>PASSWORD</label><br>
+                <input type="password" placeholder=""><br>
+                <label>CONFIRM PASSWORD</label><br>
+                <input type="password" placeholder=""><br>
+                <button type="submit" class="btn">Sign Up</button><br>
+            </div>
+            <div class="register-link">
+                <p>Have an account<br><a href="login.htm">Login</a></p>
+            </div>
+            
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

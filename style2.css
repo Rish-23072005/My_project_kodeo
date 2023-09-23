@@ -1,0 +1,121 @@
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Apply a background image to the entire body */
+body {
+    background-image: url('bg2.png');
+    background-size: cover; /* Adjust the background image size as needed */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Ensures the background image remains fixed */
+    font-family: Arial, sans-serif; /* Choose an appropriate font-family */
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display:flex;
+}
+
+/* Style the main container */
+.main {
+    background-color: purple; /* Add a semi-transparent white background to make text readable */
+    margin: 20px;
+    border-radius: 10px; /* Rounded corners for the main container */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    color: white;
+    width:600px;
+    padding: 30px 40px;
+}
+
+/* Style the headings */
+.main h1 {
+    font-size: 36px;
+    color: white; /* Choose an appropriate text color */
+    text-align: center;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+h4 {
+    font-size: 24px;
+    color: black; /* Choose an appropriate text color */
+    text-align: center;
+    margin-bottom: 20px;
+}
+.main .input-box{
+    width:100%;
+    margin:30px 0;
+    position: relative;
+}
+
+/* Style the form elements */
+.input-box input {
+    width:100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+}
+.input-box input::placeholder{
+    color:black;
+    font-size: 16px;
+}
+
+label {
+    font-size: 24px;
+    color: white; /* Choose an appropriate text color */
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc; /* Add a border for input elements */
+    border-radius: 5px;
+}
+
+/* Style the buttons */
+.btn {
+    width: 100%;
+    height: 45px;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointor;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    font-size: 24px; 
+}
+
+/* Style the registration link */
+.register-link {
+    font-size:14.5px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+.register-link a {
+    color: black; 
+    text-decoration: none;
+    font-weight: 600;
+    font-size:24px;
+}
+
+/* Add hover effect for links */
+.register-link a:hover {
+    text-decoration: underline;
+}

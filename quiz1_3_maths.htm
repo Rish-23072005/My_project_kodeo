@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Quiz</title>
+    <link rel="stylesheet" href="quiz1.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="question">
+            <img src="q1_3_maths.png" alt="Question 1">
+        </div>
+        <div class="options">
+            <label><input type="radio" name="q1" value="4"> (a) 4</label>
+            <label><input type="radio" name="q1" value="6"> (b) 6</label>
+            <label><input type="radio" name="q1" value="5"> (c) 5</label>
+            <label><input type="radio" name="q1" value="8"> (d) 8</label>
+        </div>
+        <div class="navigation">
+            <button id="prevBtn" class="btn hidden" onclick="changeQuestion(-1)">Previous</button>
+            <button id="nextBtn" class="btn" onclick="changeQuestion(1)">Next</button>
+            <button id="submitBtn" class="btn hidden" onclick="submitQuiz()">Submit</button>
+        </div>
+        <div id="results" class="hidden">
+            <h2>Quiz Results</h2>
+            <ul id="quiz-score"></ul>
+            <h2>Correct Answers</h2>
+            <ul id="correct-answers"></ul>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        const questions = [
+            { image: "q1_3_maths.png", options: ["(a) 4", "(b) 6", "(c) 5","(d) 8"], correctAnswer: "(c) 5" },
+            { image: "q2_3_maths.png", options: ["(a) Fifty", "(b) Fivety", "(c) Fivty","(d) Fifety"], correctAnswer: "(a) Fifty" },
+            { image: "q3_3_maths.png", options: ["(a) 6", "(b) 8", "(c) 9","(d) 1"], correctAnswer: "(a) 6" },
+            { image: "q4_3_maths.png", options: ["(a) 10", "(b) 12", "(c) 11","(d) 14"], correctAnswer: "(b) 12" },
+            { image: "q5_3_maths.png", options: ["(a) 31and 33", "(b) 33 and 31", "(c) 31 and 30","(d) 30 and 31"], correctAnswer: "(a) 31 and 33" },
+        ];
+
+        function showQuestion(index) {
+            const questionContainer = document.querySelector('.question');
+            const optionsContainer = document.querySelector('.options');
+            questionContainer.innerHTML = `<img src="${questions[index].image}" alt="Question ${index + 1}">`;
+
+            let optionsHTML = '';
+            questions[index].options.forEach(option => {
+                optionsHTML += `<label><input type="radio" name="q${index}" value="${option}"> ${option}</label>`;
+            });
+
+            optionsContainer.innerHTML = optionsHTML;
+        }
+
+        function changeQuestion(step) {
+            currentQuestion += step;
+
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (currentQuestion === 0) {
+                prevBtn.classList.add('hidden');
+            } else {
+                prevBtn.classList.remove('hidden');
+            }
+
+            if (currentQuestion === questions.length - 1) {
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            }
+
+            showQuestion(currentQuestion);
+        }
+
+        // Show the first question initially
+        //showQuestion(currentQuestion);
+        let userResponses = new Array(questions.length).fill(null);
+
+        function showPreviousResponses() {
+            questions.forEach((question, index) => {
+                const userResponse = userResponses[index];
+                if (userResponse !== null) {
+            document.querySelector(`input[name="q${index}"][value="${userResponse}"]`).checked = true;
+        }
+    });
+}
+
+function submitQuiz() {
+    const correctAnswersList = document.getElementById('correct-answers');
+    correctAnswersList.innerHTML = '';
+
+    const quizScore = document.getElementById('quiz-score');
+    quizScore.innerHTML = '';
+
+    let score = 0;
+
+    questions.forEach((question, index) => {
+        const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selectedOption) {
+            const userAnswer = selectedOption.value;
+            userResponses[index] = userAnswer;
+            if (userAnswer === question.correctAnswer) {
+                score++;
+            }
+        }
+    });
+
+    userResponses.forEach((userResponse, index) => {
+        const question = questions[index];
+        const isCorrect = userResponse === question.correctAnswer;
+        const li = document.createElement('li');
+        li.textContent = `Question ${index + 1}: ${isCorrect ? 'Correct' : 'Incorrect'}`;
+    });
+
+    questions.forEach((question, index) => {
+        correctAnswersList.innerHTML += `<li>Question ${index + 1}: <span class="correct-answer">${question.correctAnswer}</span></li>`;
+    });
+
+    alert(`Quiz submitted!`);
+
+    // Show the results and previously marked answers
+    const resultsContainer = document.getElementById('results');
+    resultsContainer.classList.remove('hidden');
+    showPreviousResponses();
+}
+
+// Show the first question initially
+showQuestion(currentQuestion);
+    </script>
+</body>
+</html>
